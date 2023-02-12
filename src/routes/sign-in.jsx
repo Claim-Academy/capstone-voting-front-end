@@ -3,19 +3,28 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { Alert } from "@mui/material";
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form, useSubmit } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import InputText from "../components/input-text";
 import Layout from "../components/layout/layout";
+import AuthContext from "../context/auth";
+import { userApi } from "../services";
+import { getUserFromToken } from "../utils";
 
-// TODO: Go home if there is a token in localStorage
 export default function SignIn() {
   const [isRegistering, setIsRegistering] = useState(true);
 
-  // Manually set up the submit handler
-  const submit2Router = useSubmit();
+  const [user, setUser] = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user, navigate]);
 
   const formSchema = yup.object({
     username: yup.string().required("Username is required"),
@@ -29,6 +38,7 @@ export default function SignIn() {
 
   const {
     register,
+    handleSubmit,
     formState: { errors },
     control,
     reset,
@@ -43,22 +53,16 @@ export default function SignIn() {
         <h1 className="text-center capitalize">Sign in</h1>
         <Form
           className="mt-4 flex flex-col items-center gap-y-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-            const fd = new FormData(e.target);
+          onSubmit={handleSubmit(async (data) => {
+            // TODO: Build Error Route
+            const { token } = await userApi.signIn(data, isRegistering);
+            localStorage.setItem("token", token);
 
-            // * ⚠️ FormData doesn't support boolean
-            // We will send it as a string, or not send it at all (if it's false) 🤓
-            isRegistering && fd.append("isRegistering", isRegistering);
+            setUser(getUserFromToken(token));
 
-            // Let the router handle the submit
-            submit2Router(
-              fd,
-
-              // * Need this to trigger the action in the router
-              { method: "POST" }
-            );
-          }}
+            // TODO: Navigate to link builder
+            navigate("/");
+          })}
         >
           <InputText label="Username" id="username" register={register}>
             {errors.username && (
