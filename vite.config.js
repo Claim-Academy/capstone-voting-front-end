@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-import react from '@vitejs/plugin-react-swc'
+import react from "@vitejs/plugin-react-swc";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -8,6 +8,7 @@ export default defineConfig({
     alias: {
       "@": "/src",
       "@components": "/src/components",
+      "@context": "/src/context",
       "@hooks": "/src/hooks",
       "@routes": "/src/routes",
       "@services": "/src/services",
