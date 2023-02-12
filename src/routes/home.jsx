@@ -5,18 +5,14 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import RestaurantCard from "../components/restaurant/restaurant-card";
 import { restaurantApi } from "../services";
-import AuthContext from "../context/auth";
 
 export default function Home() {
   const [restaurant, setRestaurant] = useState(null);
-  const stuff = useContext(AuthContext);
-
-  console.log(stuff);
 
   const cuisines = useLoaderData();
 
