@@ -3,14 +3,16 @@ import {
   redirect,
   RouterProvider,
 } from "react-router-dom";
+import AuthContext from "./context/auth";
 import Home from "./routes/home";
 import SignIn from "./routes/sign-in";
 import { cuisineApi, userApi } from "./services";
+import { getUserFromToken } from "./utils";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: <Home msg="hi" />,
     loader() {
       return cuisineApi.index();
     },
@@ -29,7 +31,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <RouterProvider router={router}>
+      <AuthContext.Provider value={getUserFromToken()} />
+    </RouterProvider>
+  );
 }
 
 export default App;

@@ -5,14 +5,18 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Layout from "../components/layout/layout";
 import RestaurantCard from "../components/restaurant/restaurant-card";
 import { restaurantApi } from "../services";
+import AuthContext from "../context/auth";
 
 export default function Home() {
   const [restaurant, setRestaurant] = useState(null);
+  const stuff = useContext(AuthContext);
+
+  console.log(stuff);
 
   const cuisines = useLoaderData();
 
@@ -36,7 +40,6 @@ export default function Home() {
       </p> */}
 
         {/* TODO: Add some 'Link's to 'dumb' routes to explain and 'sell' 😵‍💫 this thing! */}
-
         <form
           className="my-16 flex flex-col gap-y-4"
           onSubmit={(e) => {
