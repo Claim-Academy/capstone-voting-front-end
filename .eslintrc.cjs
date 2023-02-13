@@ -18,7 +18,10 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react", "use-encapsulation", "testing-library", "jest-dom"],
-  rules: { "use-encapsulation/prefer-custom-hooks": 1 },
+  rules: {
+    "no-unused-vars": ["error", { varsIgnorePattern: "_" }],
+    "use-encapsulation/prefer-custom-hooks": 1,
+  },
   settings: {
     react: {
       version: "detect",
