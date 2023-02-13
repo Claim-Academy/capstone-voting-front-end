@@ -8,7 +8,6 @@ import { useForm } from "react-hook-form";
 import { Form, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import InputText from "../components/input-text";
-import Layout from "../components/layout/layout";
 import AuthContext from "../context/auth";
 import { userApi } from "../services";
 import { getUserFromToken } from "../utils";
@@ -48,7 +47,7 @@ export default function SignIn() {
   });
 
   return (
-    <Layout>
+    <>
       <Container component="main" maxWidth="xs">
         <h1 className="text-center capitalize">Sign in</h1>
         <Form
@@ -111,6 +110,6 @@ export default function SignIn() {
         </Form>
       </Container>
       <DevTool control={control} /> {/* set up the dev tool */}
-    </Layout>
+    </>
   );
 }
