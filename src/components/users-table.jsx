@@ -1,5 +1,5 @@
 import { TableBody, TableCell, TableRow } from "@mui/material";
-import { useState } from "React";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { useSubmit } from "react-router-dom";
 import ConfirmDialog from "./confirm-dialog";
