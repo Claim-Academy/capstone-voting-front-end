@@ -4,7 +4,7 @@ import Layout from "./components/layout";
 import RequireAuth from "./components/require-auth";
 import AuthContext from "./context/auth";
 import Home from "./routes/home";
-import ProtectedErrorBoundary from "./routes/ProtectedErrorBoundary";
+import ProtectedErrorBoundary from "./routes/protected-error-boundary";
 import SignIn from "./routes/sign-in";
 import SuperAdmin from "./routes/super-admin";
 import { cuisineApi, userApi } from "./services";
