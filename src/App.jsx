@@ -39,6 +39,12 @@ const router = createBrowserRouter([
         loader() {
           return userApi.index();
         },
+        async action({ request }) {
+          const fd = await request.formData();
+          const id = fd.get("id");
+
+          return userApi.destroy(id);
+        },
       },
     ],
   },

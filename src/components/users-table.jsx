@@ -35,6 +35,14 @@ export default function UsersTable({ users }) {
         open={Boolean(clickedUser)}
         title={clickedUser && `Erase ${clickedUser.username}?`}
         onConfirm={() => {
+          // Prepare a form data object to submit
+          const fd = new FormData();
+          fd.append("id", clickedUser.id);
+
+          submit(fd, {
+            method: "DELETE",
+          });
+
           setClickedUser(null);
         }}
         onCancel={() => {
