@@ -7,6 +7,7 @@ import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import Leaflet from "../components/leaflet";
 import RestaurantCard from "../components/restaurant/restaurant-card";
 import { restaurantApi } from "../services";
 
@@ -101,6 +102,16 @@ export default function Home() {
       </form>
 
       {restaurant && <RestaurantCard restaurant={restaurant} />}
+      {restaurant && (
+        <section className="h-96">
+          <Leaflet
+            coordinates={[
+              restaurant.coordinates.latitude,
+              restaurant.coordinates.longitude,
+            ]}
+          />
+        </section>
+      )}
 
       {/* TODO: 🗺️ */}
     </Container>
