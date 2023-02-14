@@ -19,4 +19,13 @@ export default {
       })
       .json();
   },
+  destroy(id) {
+    return ky
+      .delete(`${VITE_BASE_URL}/users/super/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .json();
+  },
 };
