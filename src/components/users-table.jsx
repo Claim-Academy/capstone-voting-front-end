@@ -8,6 +8,7 @@ export default function UsersTable({ users }) {
         <TableRow key={user.id}>
           <TableCell>{user.id}</TableCell>
           <TableCell>{user.username}</TableCell>
+          <TableCell>🔥</TableCell>
         </TableRow>
       ))}
     </TableBody>
