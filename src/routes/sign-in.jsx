@@ -57,7 +57,7 @@ export default function SignIn() {
           className="mt-4 flex flex-col items-center gap-y-4"
           onSubmit={handleSubmit(async (data) => {
             const { token } = await userApi
-              .signIn(data, isRegistering)
+              .signIn({ ...data, isRegistering })
               .catch((err) => {
                 console.error(err.message);
               });

@@ -19,7 +19,11 @@ export default function SignInOut() {
 
   return (
     <li className="ml-auto flex flex-col">
-      {user && `Logged in as ${user.username}`}
+      {user && (
+        <p>
+          Logged in as <span className="font-bold">{user.username}</span>
+        </p>
+      )}
       <Button
         variant="text"
         data-user={Boolean(user)}
