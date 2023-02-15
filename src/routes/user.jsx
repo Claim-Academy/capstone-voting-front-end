@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
+import SearchForm from "../components/search-form";
 
 export default function User() {
-  const { id } = useParams();
+  const { username } = useParams();
 
   return (
-    <div>
-      <h1>User {id}</h1>
-    </div>
+    <>
+      <h1>{username}</h1>
+      <SearchForm />
+    </>
   );
 }

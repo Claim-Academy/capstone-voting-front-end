@@ -5,11 +5,11 @@ import Button from "@mui/material/Button";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
-import { useLoaderData } from "react-router-dom";
 import { restaurantApi } from "../services";
+import { useRouteLoaderData } from "react-router-dom";
 
 export default function SearchForm({ setRestaurant }) {
-  const cuisines = useLoaderData();
+  const cuisines = useRouteLoaderData("root");
 
   // For Autocomplete, we need just the strings
   const labeledCuisines = cuisines.map((cuisine) => cuisine.name);

@@ -7,21 +7,24 @@ import Home from "./routes/home";
 import ProtectedErrorBoundary from "./routes/protected-error-boundary";
 import SignIn from "./routes/sign-in";
 import SuperAdmin from "./routes/super-admin";
+import User from "./routes/user";
 import { cuisineApi, userApi } from "./services";
 import { getUserFromToken } from "./utils";
-import User from "./routes/user";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
+
+    // Used by 'Home' and 'User' routes
+    loader() {
+      return cuisineApi.index();
+    },
+    id: "root",
     children: [
       {
         path: "/",
         element: <Home />,
-        loader() {
-          return cuisineApi.index();
-        },
       },
       {
         path: "/sign-in",
@@ -50,7 +53,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/:id",
+        path: "/:username",
         element: <User />,
       },
     ],
