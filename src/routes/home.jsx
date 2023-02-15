@@ -7,7 +7,7 @@ import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import Leaflet from "../components/leaflet";
+import Leaflet from "../components/leaflet/leaflet";
 import RestaurantCard from "../components/restaurant/restaurant-card";
 import { restaurantApi } from "../services";
 
