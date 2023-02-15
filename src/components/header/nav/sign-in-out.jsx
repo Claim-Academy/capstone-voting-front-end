@@ -8,8 +8,6 @@ export default function SignInOut() {
 
   const location = useLocation();
 
-  console.log("location", location);
-
   const navigate = useNavigate();
 
   const handleSignInOut = (e) => {
