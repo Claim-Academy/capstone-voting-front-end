@@ -9,6 +9,7 @@ import SignIn from "./routes/sign-in";
 import SuperAdmin from "./routes/super-admin";
 import { cuisineApi, userApi } from "./services";
 import { getUserFromToken } from "./utils";
+import User from "./routes/user";
 
 const router = createBrowserRouter([
   {
@@ -26,8 +27,10 @@ const router = createBrowserRouter([
         path: "/sign-in",
         element: <SignIn />,
       },
+
+      // Keep the '/super' route above the 'regular' user route
       {
-        path: "/super-admin",
+        path: "/super",
         element: (
           <RequireAuth>
             <SuperAdmin />
@@ -45,6 +48,10 @@ const router = createBrowserRouter([
 
           return userApi.destroy(id);
         },
+      },
+      {
+        path: "/:id",
+        element: <User />,
       },
     ],
   },
