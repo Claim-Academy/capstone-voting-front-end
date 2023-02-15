@@ -1,10 +1,14 @@
 import AuthContext from "@context/auth";
 import Button from "@mui/material/Button";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SignInOut() {
   const [user, setUser] = useContext(AuthContext);
+
+  const location = useLocation();
+
+  console.log("location", location);
 
   const navigate = useNavigate();
 
@@ -29,7 +33,13 @@ export default function SignInOut() {
         data-user={Boolean(user)}
         onClick={handleSignInOut}
       >
-        {user ? "Sign Out?" : "Sign In"}
+        {/* If we are at 'sign-in', then don't render anything. */}
+        {location.pathname === "/sign-in"
+          ? null
+          : // Otherwise, render the correct text based on whether we have a user.
+          user
+          ? "Sign Out?"
+          : "Sign In"}
       </Button>
     </li>
   );
