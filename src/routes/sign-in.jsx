@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import InputText from "../components/input-text";
 import AuthContext from "../context/auth";
@@ -51,7 +51,7 @@ export default function SignIn() {
     <>
       <Container component="main" maxWidth="xs">
         <h1 className="text-center capitalize">Sign in</h1>
-        <Form
+        <form
           className="mt-4 flex flex-col items-center gap-y-4"
           onSubmit={handleSubmit(async (data) => {
             const { token } = await userApi
@@ -111,7 +111,7 @@ export default function SignIn() {
                 : "Don't have an account?"}
             </Button>
           </div>
-        </Form>
+        </form>
       </Container>
       <DevTool control={control} /> {/* set up the dev tool */}
     </>
