@@ -5,10 +5,9 @@ import Button from "@mui/material/Button";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
-import { restaurantApi } from "../services";
 import { useRouteLoaderData } from "react-router-dom";
 
-export default function SearchForm({ setRestaurant }) {
+export default function SearchForm({ onSubmit }) {
   const cuisines = useRouteLoaderData("root");
 
   // For Autocomplete, we need just the strings
@@ -17,15 +16,8 @@ export default function SearchForm({ setRestaurant }) {
   return (
     <form
       className="my-16 flex flex-col gap-y-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        const fd = new FormData(e.target);
-        const data = Object.fromEntries(fd);
-
-        restaurantApi.show(data).then((restaurant) => {
-          setRestaurant(restaurant);
-        });
-      }}
+      // TODO: Update this submission so that doesn't bother the API nec
+      onSubmit={onSubmit}
     >
       <Autocomplete
         disablePortal
@@ -81,5 +73,5 @@ export default function SearchForm({ setRestaurant }) {
 }
 
 SearchForm.propTypes = {
-  setRestaurant: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func,
 };
