@@ -1,39 +1,17 @@
 import ExploreIcon from "@mui/icons-material/Explore";
 import NearMeIcon from "@mui/icons-material/NearMe";
-import Autocomplete from "@mui/material/Autocomplete";
 import Button from "@mui/material/Button";
 import Slider from "@mui/material/Slider";
 import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
-import { useRouteLoaderData } from "react-router-dom";
 
 export default function TheForm({ onSubmit, children }) {
-  const cuisines = useRouteLoaderData("root");
-
-  // For Autocomplete, we need just the strings
-  const labeledCuisines = cuisines.map((cuisine) => cuisine.name);
-
   return (
     <form
       className="my-8 flex flex-col gap-y-4"
       // TODO: Update this submission so that doesn't bother the API nec
       onSubmit={onSubmit}
     >
-      <Autocomplete
-        disablePortal
-        options={labeledCuisines}
-        renderInput={
-          // 'params' is used by MUI to control the input value
-          (params) => (
-            <TextField
-              {...params}
-              label="What cuisine R U in the mood for? 😋"
-              id="cuisine"
-              name="category"
-            />
-          )
-        }
-      />
       <TextField
         label="Where do you want to head? (5-Digit Zip Code)"
         id="zip"
@@ -60,6 +38,8 @@ export default function TheForm({ onSubmit, children }) {
         <ExploreIcon />
       </div>
 
+      {children}
+
       <Button
         variant="contained"
         color="success"
@@ -68,9 +48,6 @@ export default function TheForm({ onSubmit, children }) {
       >
         Go!
       </Button>
-
-      {/* This is for logged in users so we can pass in additional options such as adding a name for their URL. */}
-      {children}
     </form>
   );
 }
