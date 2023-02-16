@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import SearchForm from "../components/search-form";
+import TheForm from "../components/the-form";
 
 export default function User() {
   const { id } = useParams();
@@ -7,7 +7,7 @@ export default function User() {
   return (
     <>
       <h1>{id}</h1>
-      <SearchForm />
+      <TheForm />
     </>
   );
 }
