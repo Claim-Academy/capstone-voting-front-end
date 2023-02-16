@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import Leaflet from "../components/leaflet/leaflet";
 import RestaurantCard from "../components/restaurant/restaurant-card";
-import TheForm from "../components/search-form";
+import TheForm from "../components/the-form";
 import { restaurantApi } from "../services";
 
 export default function Home() {
