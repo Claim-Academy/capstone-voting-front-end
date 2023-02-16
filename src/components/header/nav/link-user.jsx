@@ -7,7 +7,7 @@ export default function LinkUser() {
 
   return user ? (
     <li>
-      <Link to={`/user/${user.id}`}>Manage URLs</Link>
+      <Link to={`/${user.username}`}>Manage URLs</Link>
     </li>
   ) : null;
 }
