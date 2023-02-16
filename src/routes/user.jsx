@@ -2,12 +2,11 @@ import { useParams } from "react-router-dom";
 import TheForm from "../components/the-form";
 
 export default function User() {
-  const { id } = useParams();
+  const { username } = useParams();
 
   return (
     <>
-      <h1>{id}</h1>
-      <TheForm />
+      <h1>👋🏾 {username}</h1>
     </>
   );
 }

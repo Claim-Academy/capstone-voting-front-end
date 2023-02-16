@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/:id",
+        path: "/:username",
         element: (
           <RequireAuth>
             <User />

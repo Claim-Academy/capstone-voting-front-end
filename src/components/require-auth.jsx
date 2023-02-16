@@ -12,7 +12,7 @@ export default function RequireAuth({ children }) {
   if (
     (pathname === "/super" && !user.isSuperUser) ||
     // Remove the leading slash
-    pathname.slice(1) !== user.id
+    pathname.slice(1) !== user.username
   )
     return <Navigate to="/" />;
 
