@@ -19,7 +19,7 @@ export default function Home() {
   };
 
   return (
-    <Container component="main" maxWidth="xs" className="mb-8">
+    <>
       <TheForm onSubmit={handleRestaurantSubmit} />
       {restaurant && <RestaurantCard restaurant={restaurant} />}
       {restaurant && (
@@ -32,6 +32,6 @@ export default function Home() {
           />
         </section>
       )}
-    </Container>
+    </>
   );
 }

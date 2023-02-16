@@ -15,7 +15,7 @@ export default function TheForm({ onSubmit, children }) {
 
   return (
     <form
-      className="my-16 flex flex-col gap-y-4"
+      className="my-8 flex flex-col gap-y-4"
       // TODO: Update this submission so that doesn't bother the API nec
       onSubmit={onSubmit}
     >
