@@ -5,11 +5,16 @@ import AuthContext from "../context/auth";
 
 export default function RequireAuth({ children }) {
   const [user] = useContext(AuthContext);
+
   const { pathname } = useLocation();
 
-  // TODO: Check pathname against user id
-  // 'isSuperUser' is set from the token
-  if (pathname === "/super" && !user.isSuperUser) return <Navigate to="/" />;
+  // 'isSuperUser' is set from the token, as well as the user's id
+  if (
+    (pathname === "/super" && !user.isSuperUser) ||
+    // Remove the leading slash
+    pathname.slice(1) !== user.id
+  )
+    return <Navigate to="/" />;
 
   return children;
 }
