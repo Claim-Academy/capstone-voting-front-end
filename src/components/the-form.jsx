@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
 import { useRouteLoaderData } from "react-router-dom";
 
-export default function TheForm({ onSubmit }) {
+export default function TheForm({ onSubmit, children }) {
   const cuisines = useRouteLoaderData("root");
 
   // For Autocomplete, we need just the strings
@@ -68,10 +68,14 @@ export default function TheForm({ onSubmit }) {
       >
         Go!
       </Button>
+
+      {/* This is for logged in users so we can pass in additional options such as adding a name for their URL. */}
+      {children}
     </form>
   );
 }
 
 TheForm.propTypes = {
   onSubmit: PropTypes.func,
+  children: PropTypes.node,
 };
