@@ -2,7 +2,7 @@ import Container from "@mui/material/Container";
 import { useState } from "react";
 import Leaflet from "../components/leaflet/leaflet";
 import RestaurantCard from "../components/restaurant/restaurant-card";
-import SearchForm from "../components/search-form";
+import TheForm from "../components/search-form";
 import { restaurantApi } from "../services";
 
 export default function Home() {
@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <Container component="main" maxWidth="xs" className="mb-8">
-      <SearchForm onSubmit={handleRestaurantSubmit} />
+      <TheForm onSubmit={handleRestaurantSubmit} />
       {restaurant && <RestaurantCard restaurant={restaurant} />}
       {restaurant && (
         <section className="h-96">

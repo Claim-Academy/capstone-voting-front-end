@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import PropTypes from "prop-types";
 import { useRouteLoaderData } from "react-router-dom";
 
-export default function SearchForm({ onSubmit }) {
+export default function TheForm({ onSubmit }) {
   const cuisines = useRouteLoaderData("root");
 
   // For Autocomplete, we need just the strings
